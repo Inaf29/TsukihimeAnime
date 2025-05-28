@@ -1,1 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Site Tsukihime | 月姫</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        /* Variabel Warna */
+        :root {
+            --warna-utama: #8b0000;
+            --warna-sekunder: #4a0000;
+            --warna-teks: #f8f8f8;
+            --warna-teks-gelap: #333;
+            --warna-aksen: #ff6347;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--warna-teks-gelap);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://w0.peakpx.com/wallpaper/460/131/HD-wallpaper-tsukihime-2021-game.jpg') no-repeat center center/cover;
+            color: var(--warna-teks);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .navigasi {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--warna-teks);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--warna-aksen);
+        }
+
+        .menu-nav {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu-nav li {
+            margin-left: 2rem;
+        }
+
+        .menu-nav a {
+            color: var(--warna-teks);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .menu-nav a:hover {
+            color: var(--warna-aksen);
+        }
+
+        .konten-header {
+            margin: auto;
+            max-width: 800px;
+        }
+
+        .konten-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .konten-header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tombol {
+            display: inline-block;
+            background-color: var(--warna-aksen);
+            color: var(--warna-teks);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .tombol:hover {
+            background-color: var(--warna-sekunder);
+            transform: translateY(-3px);
+        }
+
+        /* Bagian Utama */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .judul-bagian {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .judul-bagian h2 {
+            font-size: 2.5rem;
+            color: var(--warna-sekunder);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .judul-bagian h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--warna-aksen);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Tentang */
+        .tentang {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .grid-tentang {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .gambar-tentang img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .teks-tentang h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--warna-sekunder);
+        }
+
+        /* Karakter */
+        .karakter {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .grid-karakter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .kartu-karakter {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .kartu-karakter:hover {
+            transform: translateY(-10px);
+        }
+
+        .gambar-karakter img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .info-karakter {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .info-karakter h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--warna-sekunder);
+        }
+
+        .info-karakter p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Galeri */
+        .galeri {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .grid-galeri {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .item-galeri {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+
+        .item-galeri img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .item-galeri:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay-galeri {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(139, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .item-galeri:hover .overlay-galeri {
+            opacity: 1;
+        }
+
+        .overlay-galeri i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--warna-sekunder);
+            color: var(--warna-teks);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .sosmed {
+            margin-bottom: 1.5rem;
+        }
+
+        .sosmed a {
+            color: var(--warna-teks);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .sosmed a:hover {
+            color: var(--warna-aksen);
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .navigasi {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .menu-nav {
+                margin-top: 1rem;
+            }
+
+            .menu-nav li {
+                margin: 0 0.5rem;
+            }
+
+            .konten-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid-tentang {
+                grid-template-columns: 1fr;
+            }
+
+            .gambar-tentang {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navigasi">
+            <a href="#" class="logo">Tsuki<span>hime</span></a>
+            <ul class="menu-nav">
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#karakter">Karakter</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+            </ul>
+        </nav>
+
+        <div class="konten-header">
+            <h1>月姫</h1>
+            <h1>Tsukihime</h1>
+            <p>Sebuah visual novel Jepang yang dikembangkan oleh Type-Moon</p>
+            <a href="#tentang" class="tombol">Jelajahi</a>
+        </div>
+    </header>
+
+    <!-- Tentang -->
+    <section id="tentang" class="tentang">
+        <div class="container">
+            <div class="judul-bagian">
+                <h2>Tentang Tsukihime</h2>
+            </div>
+            <div class="grid-tentang">
+                <div class="teks-tentang">
+                    <h3>Cerita Misterius dan Menegangkan</h3>
+                    <p>Tsukihime adalah visual novel yang dirilis pada tahun 2000 oleh Type-Moon. Ceritanya mengikuti Shiki Tohno, seorang siswa SMA yang setelah kecelakaan di masa kecilnya, memperoleh kemampuan untuk melihat "garis kematian" di semua benda.</p>
+                    <p>Ketika Shiki bertemu dengan seorang wanita misterius bernama Arcueid Brunestud, dia terlibat dalam dunia makhluk supernatural yang tidak pernah dia ketahui sebelumnya. Bersama Arcueid, Shiki harus menghadapi ancaman Dead Apostles (vampir) dan misteri di balik kemampuan matanya.</p>
+                    <p>Visual novel ini memiliki beberapa rute cerita yang berbeda tergantung pada pilihan pemain, masing-masing mengeksplorasi aspek berbeda dari dunia dan karakter Tsukihime.</p>
+                </div>
+                <div class="gambar-tentang">
+                    <img src="https://preview.redd.it/qi9fyu5ucep61.jpg?width=1080&crop=smart&auto=webp&s=1e08e3f36e52ae2885baec9c9ce563bbdc3c7643" alt="Ilustrasi Tsukihime">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Karakter -->
+    <section id="karakter" class="karakter">
+        <div class="container">
+            <div class="judul-bagian">
+                <h2>Karakter Utama</h2>
+            </div>
+            <div class="grid-karakter">
+                <!-- Karakter 1 -->
+                <div class="kartu-karakter">
+                    <div class="gambar-karakter">
+                        <img src="https://s1.zerochan.net/Arcueid.Brunestud.600.770081.jpg" alt="Arcueid Brunestud">
+                    </div>
+                    <div class="info-karakter">
+                        <h3>Arcueid Brunestud</h3>
+                        <p>Putri True Ancestor yang kuat dan misterius. Dia mencari Shiki untuk membantunya melawan Dead Apostles.</p>
+                    </div>
+                </div>
+
+                <!-- Karakter 2 -->
+                <div class="kartu-karakter">
+                    <div class="gambar-karakter">
+                        <img src="https://adala-news.fr/wp-content/uploads/2020/12/Tsukihime-A-Piece-of-Blue-Glass-Moon-image-2.jpg" alt="Shiki Tohno">
+                    </div>
+                    <div class="info-karakter">
+                        <h3>Shiki Tohno</h3>
+                        <p>Protagonis utama dengan kemampuan Mystic Eyes of Death Perception yang memungkinkannya melihat garis kematian.</p>
+                    </div>
+                </div>
+
+                <!-- Karakter 3 -->
+                <div class="kartu-karakter">
+                    <div class="gambar-karakter">
+                        <img src="https://cdn.gamerbraves.com/2023/07/Tsukihime_Remake_Ciel_Route.jpg" alt="Ciel">
+                    </div>
+                    <div class="info-karakter">
+                        <h3>Ciel</h3>
+                        <p>Guru di sekolah Shiki yang juga merupakan pemburu Dead Apostle yang berpengalaman.</p>
+                    </div>
+                </div>
+
+                <!-- Karakter 4 -->
+                <div class="kartu-karakter">
+                    <div class="gambar-karakter">
+                        <img src="https://w0.peakpx.com/wallpaper/177/131/HD-wallpaper-tsukihime-a-piece-of-blue-glass-moon.jpg" alt="Akiha Tohno">
+                    </div>
+                    <div class="info-karakter">
+                        <h3>Akiha Tohno</h3>
+                        <p>Adik perempuan Shiki dan pewaris keluarga Tohno. Dia memiliki kepribadian yang dingin dan tegas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri -->
+    <section id="galeri" class="galeri">
+        <div class="container">
+            <div class="judul-bagian">
+                <h2>Galeri</h2>
+            </div>
+            <div class="grid-galeri">
+                <!-- Gambar 1 -->
+                <div class="item-galeri">
+                    <img src="https://o.qoo-img.com/storage.qoo-img.com/game/16400/H4ygnfN37LY0ujh2pPMmn97atIYftipm.jpg" alt="Tsukihime 1">
+                    <div class="overlay-galeri">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Gambar 2 -->
+                <div class="item-galeri">
+                    <img src="https://www.frontlinejp.net/wp-content/uploads/2021/09/Tsukihime_Vlov2.jpg" alt="Tsukihime 2">
+                    <div class="overlay-galeri">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Gambar 3 -->
+                <div class="item-galeri">
+                    <img src="https://gamerbraves.sgp1.cdn.digitaloceanspaces.com/2022/08/Tsukihime-Remake-Opening-Focuses-on-Shiki-and-Arcueid.jpg" alt="Tsukihime 3">
+                    <div class="overlay-galeri">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Gambar 4 -->
+                <div class="item-galeri">
+                    <img src="https://static.wikia.nocookie.net/typemoon/images/c/ca/Vlov_killed_by_Ciel.jpg/revision/latest?cb=20220223190353" alt="Tsukihime 4">
+                    <div class="overlay-galeri">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Gambar 5 -->
+                <div class="item-galeri">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e579ec1c-fe17-4ad2-9db7-b7da76b52002/dflr7ub-b9b6bbdd-841e-4234-b846-7422946819aa.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2U1NzllYzFjLWZlMTctNGFkMi05ZGI3LWI3ZGE3NmI1MjAwMlwvZGZscjd1Yi1iOWI2YmJkZC04NDFlLTQyMzQtYjg0Ni03NDIyOTQ2ODE5YWEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.q2KjjYjz33OOCEYsJD9l4HiIs1sW54QPj1rW1OB-pIU" alt="Tsukihime 5">
+                    <div class="overlay-galeri">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+
+                <!-- Gambar 6 -->
+                <div class="item-galeri">
+                    <img src="https://gamebrott.com/wp-content/uploads/2021/09/Tsukihime-Remake-Akiha-Tohno.png" alt="Tsukihime 6">
+                    <div class="overlay-galeri">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="sosmed">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2023 Fan Site Tsukihime. Semua hak cipta milik Type-Moon.</p>
+    </footer>
+
+    <!-- Sedikit JavaScript untuk efek smooth scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
